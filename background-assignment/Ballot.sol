@@ -48,14 +48,17 @@ contract Ballot {
     }
     
     /** 
-     * @dev Give 'voter' the right to vote on this ballot. May only be called by 'chairperson'.
+     * @dev Give 'voters' the right to vote on this ballot. May only be called by 'chairperson'.
      * @param pendingVoters array of addresses of voter
      */
     function giveRightToVote(address[] calldata pendingVoters) public {
+        /// with passed array of voters, the chairperson requirement only gets checked once when batch assigning voting rights
         require(
             msg.sender == chairperson,
             "Only chairperson can give right to vote."
         );
+        /// removed check for whether the address has already voted, as the vote function checks this. 
+        /// the next check for weight should also prevent voter weight from being reset if already given right to vote before
         for (uint i = 0; i < pendingVoters.length; i++) {
             require(voters[pendingVoters[i]].weight == 0);
             voters[pendingVoters[i]].weight = 1;
