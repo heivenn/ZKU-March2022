@@ -14,6 +14,7 @@ template Jump () {
     signal input x3; // coordinates of c
     signal input y3;
     signal input energy;
+    signal output out;
 
     // distanceSq = diffX2X1Sq + diffY2Y1Sq
     // verify that A to B move distance is within energy bounds
@@ -66,6 +67,8 @@ template Jump () {
     firstAndSecondAreaCalc <== firstAreaCalc + secondAreaCalc;
     area <== firstAndSecondAreaCalc + thirdAreaCalc;
     assert(area != 0);
+
+    out <== 1;
 }
 
 
