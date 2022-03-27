@@ -1,7 +1,7 @@
-/* 
-    Q2.1.1 Updates state with new merkle root by providing proof that updatestate circuit was
-    done correctly and used previous merkle root as input
-*/
+/*
+ *   Q2.1.1 Updates state with new merkle root by providing proof that updatestate circuit was
+ *   done correctly and used previous merkle root as input
+ */
 function updateState(
     uint256[2] memory a,
     uint256[2][2] memory b,
@@ -22,10 +22,10 @@ function updateState(
     emit UpdatedState(input[0], input[1], input[2]); //newRoot, txRoot, oldRoot
 }
 
-/* 
-    Q2.1.2 Creates a deposit of ERC20 token in pendingDeposits and hashes it into a subtree root hash
-    if a perfect subtree is completed, to be processed by the operator later.
-*/
+/*
+ *  Q2.1.2 Creates a deposit of ERC20 token in pendingDeposits and hashes it into a subtree root hash
+ *  if a perfect subtree is completed, to be processed by the operator later.
+ */
 function deposit(
     uint256[2] memory pubkey,
     uint256 amount,
@@ -98,10 +98,10 @@ function deposit(
     }
 }
 
-/* 
-    Q2.1.3 Completes a withdrawal of tokens by checking for existence of the withdrawal transaction
-    in the transaction tree, verifying their signature, and transfering the tokens to the specified address
-*/
+/*
+ *  Q2.1.3 Completes a withdrawal of tokens by checking for existence of the withdrawal transaction
+ *  in the transaction tree, verifying their signature, and transfering the tokens to the specified address
+ */
 function withdraw(
     uint256[9] memory txInfo, //[pubkeyX, pubkeyY, index, toX ,toY, nonce, amount, token_type_from, txRoot]
     uint256[] memory position,
